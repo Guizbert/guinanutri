@@ -24,7 +24,7 @@ import { response } from "express";
              emailToken: code
          });
          await newUser.save();
-         const link = `https://guinanutri.azurewebsites.net/verification?code=${code}`;
+         const link = `https://guinanutri-9235c252beda.herokuapp.com/verification?code=${code}`;
          await verifyEmail(email, username, link);
          const { password: psswd, __v: v, ...rest } = newUser._doc;
          res.json({ message: "Signup success", data: rest });

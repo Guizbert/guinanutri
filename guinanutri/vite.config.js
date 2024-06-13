@@ -7,7 +7,7 @@ export default defineConfig({
     port: 8080, // Ajout du port 8080
     proxy: {
       '/api': {
-        target: 'https://guinanutri.azurewebsites.net/',
+        target: 'https://guinanutri-9235c252beda.herokuapp.com',
         changeOrigin: true, // Ajoute cette ligne pour gérer les requêtes de proxy correctement
       },
     },
