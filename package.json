@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon api/index.js",
     "start": "node api/index.js",
-    "build": "npm install && cd guinanutri && npm install && npm run build",
+    "build": "cd guinanutri && npm install && npm run build",
     "heroku-postbuild": "cd guinanutri && npm install && npm run build"
   },
   "keywords": [],
