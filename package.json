@@ -26,5 +26,9 @@
     "nodemailer": "^6.9.13",
     "nodemon": "^3.0.3",
     "xoauth2": "^1.2.0"
+  },
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
   }
 }
