@@ -7,7 +7,7 @@
     "dev": "nodemon api/index.js",
     "start": "node api/index.js",
     "build": "vite build",
-    "heroku-postbuild": " npm i -g vite && cd guinanutri && npm install && npm run build"
+    "heroku-postbuild": "cd guinanutri && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +25,8 @@
     "mongoose": "^8.1.1",
     "nodemailer": "^6.9.13",
     "nodemon": "^3.0.3",
-    "xoauth2": "^1.2.0"
+    "xoauth2": "^1.2.0",
+    "vite": "^5.2.8"
   },
   "engines": {
     "node": "20.x",
