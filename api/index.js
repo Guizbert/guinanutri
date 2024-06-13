@@ -15,8 +15,7 @@ import answerRoute from './routes/answer.route.js';
 
 import path from 'path';
 
-dotenv.config();  // Chargez les variables d'environnement à partir de .env
-
+dotenv.config();  
 mongoose.connect(process.env.MONGO)
     .then(() => {
         console.log('MongoDB connected');
@@ -28,14 +27,11 @@ mongoose.connect(process.env.MONGO)
 const __dirname = path.resolve();
 const app = express();
 
-const PORT = process.env.PORT || 3000;  // Utilisez le port spécifié dans .env ou le port 3000 par défaut
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cookieParser());
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
 
 // Vos routes ici...
 // app.use('/api/...', route);
@@ -49,6 +45,7 @@ app.use('/api/form', formRoute);
 app.use('/api/questionnaire', questionnaireRoute);
 app.use('/api/userChoice',userChoice);
 app.use('/api/answer', answerRoute);
+
 
 app.use(express.static(path.join(__dirname, '../guinanutri/dist')));
 
@@ -64,4 +61,7 @@ app.use((err, req, res, next) => {
         statusCode,
         message
     });
+});
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
