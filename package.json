@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "vite": "vite",
     "dev": "nodemon api/index.js",
     "start": "node api/index.js",
-    "build": "cd guinanutri && npm install && npm run build",
+    "build": "vite build",
     "heroku-postbuild": "cd guinanutri && npm install && npm run build"
   },
   "keywords": [],
