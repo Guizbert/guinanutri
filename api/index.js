@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
-// permet de faire la lecture dans le fichier .env
-import dotenv from 'dotenv'; 
+import dotenv from 'dotenv';  // Importez dotenv
+
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 import moduleRoutes from './routes/module.route.js';
@@ -11,25 +11,25 @@ import tagRoute from './routes/tag.route.js';
 import formRoute from './routes/form.route.js';
 import questionnaireRoute from './routes/questionnaire.route.js';
 import userChoice from './routes/userChoice.route.js';
-import answerRoute from './routes/answer.route.js'
+import answerRoute from './routes/answer.route.js';
 
 import path from 'path';
 
-dotenv.config();
-mongoose
-.connect(process.env.MONGO)
-.then(
-    () => {
-        console.log('mongo db is connected');
-    }
-).catch(err => {
-    console.log(err);
-});
+dotenv.config();  // Chargez les variables d'environnement à partir de .env
+
+mongoose.connect(process.env.MONGO)
+    .then(() => {
+        console.log('MongoDB connected');
+    })
+    .catch(err => {
+        console.error('MongoDB connection error', err);
+    });
 
 const __dirname = path.resolve();
-
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+const PORT = process.env.PORT || 3000;  // Utilisez le port spécifié dans .env ou le port 3000 par défaut
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -37,6 +37,8 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
+// Vos routes ici...
+// app.use('/api/...', route);
 // doit utiliser 'use' au lieu de get
 app.use('/api/user', userRoutes); 
 app.use('/api/auth', authRoutes);
@@ -50,11 +52,11 @@ app.use('/api/answer', answerRoute);
 
 app.use(express.static(path.join(__dirname, '../guinanutri/dist')));
 
-app.get('*', (req, res ) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'guinanutri', 'dist', 'index.html'));
 });
 
-app.use((err,req,res,next) => {
+app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal Server error';
     res.status(statusCode).json({
@@ -62,4 +64,4 @@ app.use((err,req,res,next) => {
         statusCode,
         message
     });
-})
+});
