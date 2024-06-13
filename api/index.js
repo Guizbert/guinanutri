@@ -29,12 +29,12 @@ mongoose
 const __dirname = path.resolve();
 
 const app = express();
-
+const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 
-app.listen(3000, () => {
-    console.log("serv sur port 3000");
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
 // doit utiliser 'use' au lieu de get
